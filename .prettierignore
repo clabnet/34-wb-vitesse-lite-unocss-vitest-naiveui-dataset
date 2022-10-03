@@ -1,0 +1,6 @@
+# Ignore artifacts:
+node_modules
+dist
+
+# Ignored files
+**/auto-imports.d.ts

@@ -1,0 +1,77 @@
+<script setup>
+import { useMessage } from 'naive-ui'
+import MdEditor from 'md-editor-v3'
+import 'md-editor-v3/lib/style.css'
+import _ from 'lodash';
+
+import mdDocument from "@/data/document.md";
+
+defineOptions({ name: 'MDEditor' })
+
+const message = useMessage()
+
+let postObj = {
+  "title": "Titolo del post",
+  "content": "# Hello World!"
+}
+
+// _.set(postObj, 'content', JSON.stringify(mdDocument)
+
+// refs
+let post = ref(postObj)
+let btnLoading = ref(false)
+
+function handleSavePost(e) {
+  btnLoading.value = true
+  message.loading('Saving...')
+  setTimeout(() => {
+    message.success('Save successfully')
+    btnLoading.value = false
+  }, 2000)
+}
+</script>
+
+<template>
+  <div flex
+    items-center
+    bg-white>
+    <input v-model="post.title"
+      class="flex-1 mr-20 mb-5 text-5 font-bold color-primary"
+      type="text"
+      placeholder="Enter article title..." />
+    <n-button type="primary"
+      mb-5
+      style="width: 80px"
+      :loading="btnLoading"
+      @click="handleSavePost">
+      Save
+    </n-button>
+  </div>
+  <!-- https://www.npmjs.com/package/md-editor-v3 -->
+  <!-- toolbar exclude https://cdmana.com/2021/08/20210802155243846n.html -->
+  <MdEditor v-model="post.content"
+    language="en-US"
+    previewTheme="vuepress"
+    previewOnly
+    style="height: calc(100vh - 305px)" />
+</template>
+
+
+<style lang="scss">
+.md-preview {
+
+  ul,
+  ol {
+    list-style: revert;
+  }
+}
+</style>
+
+
+
+<route lang="yaml">
+  meta:
+    menuTitle: Markdown editor
+    menuOrderNo: 500
+</route>
+  
