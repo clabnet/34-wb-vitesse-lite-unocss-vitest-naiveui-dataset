@@ -9,27 +9,54 @@ import {
   transformerVariantGroup,
 } from 'unocss'
 
+
 import themeOverrides from './naive-ui-theme-overrides.json'
 
 export default defineConfig({
-  shortcuts: [
-    ['column-layout', 'flex flex-col border border-dashed p-3 my-3'],
-  ],
-  theme: {
-    colors: {
-      primary: {
-        DEFAULT: themeOverrides.common.primaryColor,
-        lighten: themeOverrides.common.primaryColorHover,
-        darken: themeOverrides.common.primaryColorPressed,
-      },
-    },
-  },
+  shortcuts: [['column-layout', 'flex flex-col border border-dashed p-3 my-3']],
+
+  // theme: {
+  //   colors: {
+  //     primary: {
+  //       // DEFAULT: themeOverrides.common.primaryColor,
+  //       // lighten: themeOverrides.common.primaryColorHover,
+  //       // darken: themeOverrides.common.primaryColorPressed,
+  //     },
+  //   },
+  // },
+
+  // theme: {
+  //   colors: {
+  //     primary: 'var(--primary-color)',
+  //     primary_hover: 'var(--primary-color-hover)',
+  //     primary_pressed: 'var(--primary-color-pressed)',
+  //     primary_active: 'var(--primary-color-active)',
+  //     info: 'var(--info-color)',
+  //     info_hover: 'var(--info-color-hover)',
+  //     info_pressed: 'var(--info-color-pressed)',
+  //     info_active: 'var(--info-color-active)',
+  //     success: 'var(--success-color)',
+  //     success_hover: 'var(--success-color-hover)',
+  //     success_pressed: 'var(--success-color-pressed)',
+  //     success_active: 'var(--success-color-active)',
+  //     warning: 'var(--warning-color)',
+  //     warning_hover: 'var(--warning-color-hover)',
+  //     warning_pressed: 'var(--warning-color-pressed)',
+  //     warning_active: 'var(--warning-color-active)',
+  //     error: 'var(--error-color)',
+  //     error_hover: 'var(--error-color-hover)',
+  //     error_pressed: 'var(--error-color-pressed)',
+  //     error_active: 'var(--error-color-active)',
+  //     dark: '#18181c'
+  //   }
+  // },
+
   rules: [
     [
       /^grid-layout-(\d+)(\/(\d+(.*)))?$/,
       ([, row, , gap, gapUnit]) => {
         return {
-          'display': 'grid',
+          display: 'grid',
           'grid-gap': `${gap ?? '36'}${gapUnit ? '' : 'px'}`,
           'grid-template-columns': `repeat(${row}, minmax(0, 1fr))`,
         }
@@ -41,10 +68,14 @@ export default defineConfig({
       ([_, keyStr]) => {
         return {
           display: 'flex',
-          ...Object.fromEntries(keyStr.split('-').slice(1)
-            .map((item) => {
-              return handleShortKeys(item)
-            })),
+          ...Object.fromEntries(
+            keyStr
+              .split('-')
+              .slice(1)
+              .map((item) => {
+                return handleShortKeys(item)
+              })
+          ),
         }
       },
       { layer: 'components' },
@@ -66,10 +97,7 @@ export default defineConfig({
       },
     }),
   ],
-  transformers: [
-    transformerDirectives(),
-    transformerVariantGroup(),
-  ],
+  transformers: [transformerDirectives(), transformerVariantGroup()],
   safelist: 'prose prose-sm m-auto text-left gap-2'.split(' '),
 })
 

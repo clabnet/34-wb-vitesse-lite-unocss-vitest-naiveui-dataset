@@ -132,6 +132,8 @@ export default defineConfig({
       'vue-router',
       '@vueuse/core',
       '@vueuse/head',
+      'lodash',
+      'naive-ui'
     ],
     exclude: [
       'vue-demi',

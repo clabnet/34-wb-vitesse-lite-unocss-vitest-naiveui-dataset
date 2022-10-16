@@ -1,16 +1,27 @@
 {
   "semi": false,
-  "trailingComma": "none",
-  "arrowParens": "always",
-  "endOfLine": "lf",
-  "tabWidth": 2,
   "singleQuote": true,
-  "printWidth": 100,
+  "endOfLine": "lf",
+  "printWidth": 160,
   "jsxSingleQuote": true,
+  "singleAttributePerLine": false,
   "bracketSameLine": true,
+  "quoteProps": "as-needed",
   "overrides": [
     {
-      "files": "*.json",
+      "files": [
+        "*.yaml",
+        "*.yml"
+      ],
+      "options": {
+        "tabWidth": 2,
+        "printWidth": 88
+      }
+    },
+    {
+      "files": [
+        "*.json"
+      ],
       "options": {
         "printWidth": 200
       }

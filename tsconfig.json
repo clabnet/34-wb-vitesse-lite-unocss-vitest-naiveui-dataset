@@ -1,38 +1,49 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
-    "allowJs": true,
-    "baseUrl": ".",
-    "module": "ESNext",
-    "target": "es2016",
-    "lib": ["DOM", "ESNext"],
-    "strict": true,
-    "esModuleInterop": true,
-    "incremental": false,
-    "skipLibCheck": true,
+    "target": "esnext",
+    /*TODO Claudio, ho tolto questa riga per risolvere il problema relativo a import.meta
+    "module": "commonjs",*/
+    "module": "es2020",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "types": [
-      "vite/client",
-      "vite-plugin-pages/client",
-      "vite-plugin-vue-layouts/client",
-      "naive-ui/volar"
-    ],
+    "allowSyntheticDefaultImports": true,
+    "strictFunctionTypes": false,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "allowJs": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "experimentalDecorators": true,
+    "lib": ["dom", "esnext"],
+    "types": ["vite/client", "node", "vitest/globals", "@intlify/vite-plugin-vue-i18n/client"],
+    "typeRoots": ["./node_modules/@types/", "./types"],
+    "noImplicitAny": false,
+    "skipLibCheck": true,
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "src/*"
-      ],
-      "@stores/*": [
-        "src/stores/*"
-      ],
+      "~/*": ["./*"],
+      "@/*": ["src/*"],
+      "/#/*": ["types/*"]
     }
   },
-  "include": ["./src/types", "src/libs/vue-json-edit.js"],
-  "exclude": ["dist", "node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+    "build/**/*.ts",
+    "build/**/*.d.ts",
+    "mock/**/*.ts",
+    "vite.config.ts",
+    "src/router/modules/home.ts",
+    "src/auto-components.d.ts",
+    "src/auto-import.d.ts"
+, "src/router/modules/evoroll.ts.txt"  ],
+  "exclude": ["node_modules", "dist"]
 }

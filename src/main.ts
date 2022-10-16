@@ -17,7 +17,7 @@ export const createApp = ViteSSG(
   },
   (ctx) => {
     const { isClient } = ctx
-    isClient 
+    isClient
 
     // install all modules under `modules/`
     Object.values(import.meta.globEager('./modules/*.ts')).forEach(i => i.install?.(ctx))

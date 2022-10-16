@@ -1,6 +1,9 @@
-# Ignore artifacts:
-node_modules
-dist
+/dist/*
+.local
+.output.js
+/node_modules/**
 
-# Ignored files
-**/auto-imports.d.ts
+**/*.svg
+**/*.sh
+
+/public/*
