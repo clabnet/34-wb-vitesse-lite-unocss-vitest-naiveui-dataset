@@ -7,6 +7,11 @@
         </h2>
         <div class="teleport-header-container" />
         <div space-x-4>
+          <n-button text :title="t('button.refesh_current_page')" @click="handleRefresh">
+              <template #icon>
+                <div i-carbon-restart />
+              </template>
+            </n-button>
           <n-button text :title="t('button.toggle_langs')" @click="toggleLocales">
             <template #icon>
               <div i="carbon-language" />
@@ -51,12 +56,6 @@
             <p class="mr-15 text-md">
               naive-ui version: {{ naiveuiVer }}
             </p>
-            <n-button tertiary class="mr-15" @click="handleRefresh">
-              <template #icon>
-                <span text-sm i-carbon-restart />
-              </template>
-              {{ t('button.refesh_current_page') }}
-            </n-button>
           </div>
         </footer>
       </n-layout-footer>
