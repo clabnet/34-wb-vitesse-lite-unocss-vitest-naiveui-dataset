@@ -5,5 +5,5 @@ button:
   home: Home
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
-  refesh_current_page: Refresh
+  refresh_current_page: Refresh
 not-found: Not found

@@ -7,7 +7,7 @@
         </h2>
         <div class="teleport-header-container" />
         <div space-x-4>
-          <n-button text :title="t('button.refesh_current_page')" @click="handleRefresh">
+          <n-button text :title="t('button.refresh_current_page')" @click="handleRefresh">
               <template #icon>
                 <div i-carbon-restart />
               </template>
